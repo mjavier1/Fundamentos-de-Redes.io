@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar PDF en Tabla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Fundamentos Redes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Documentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido -->
+  <div class="container mt-5">
+    <h2 class="mb-4">Lista de Documentos PDF</h2>
+
+    <!-- Campo de búsqueda -->
+    <div class="mb-3">
+      <input type="text" id="searchInput" class="form-control" placeholder="Buscar documento...">
+    </div>
+
+    <!-- Tabla de PDFs -->
+    <table class="table table-bordered table-striped" id="pdfTable">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Nombre del Documento</th>
+          <th>Enlace PDF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Bits</td>
+          <td><a href="Bits/Bits.pdf" target="_blank" class="btn btn-sm btn-primary">Ver PDF</a></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Política de Privacidad</td>
+          <td><a href="pdfs/politica_privacidad.pdf" target="_blank" class="btn btn-sm btn-primary">Ver PDF</a></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Reglamento Interno</td>
+          <td><a href="pdfs/reglamento.pdf" target="_blank" class="btn btn-sm btn-primary">Ver PDF</a></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Condiciones de Uso</td>
+          <td><a href="pdfs/condiciones.pdf" target="_blank" class="btn btn-sm btn-primary">Ver PDF</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script para buscar en la tabla -->
+  <script>
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#pdfTable tbody tr');
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
